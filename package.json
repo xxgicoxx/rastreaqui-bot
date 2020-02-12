@@ -1,8 +1,8 @@
 {
   "name": "rastreaqui",
   "displayName": "RastreAQUI",
-  "version": "2.0.0",
-  "description": "Bot para Telegram de acompanhamento de entregas dos Correios",
+  "version": "2.0.1",
+  "description": "Telegram bot for track Correios objects",
   "author": "Giovani de Oliveira <giovanioliveira@outlook.com.br>",
   "license": "MIT",
   "main": "app.js",
@@ -18,13 +18,13 @@
   },
   "homepage": "https://github.com/xxgicoxx/rastreaqui#readme",
   "keywords": [
+    "correiosjs",
     "correios",
-    "tracking",
-    "rastreio",
-    "rastreamento"
+    "objects",
+    "track"
   ],
   "dependencies": {
-    "correios.js": "^1.0.1",
+    "correios.js": "^2.0.0",
     "node-cron": "^2.0.3",
     "pg": "^7.14.0",
     "sequelize": "^5.21.2",

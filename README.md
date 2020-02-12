@@ -1,37 +1,55 @@
 # RastreAQUI
-Bot para Telegram de acompanhamento de entregas dos Correios.
+Telegram bot for track Correios objects.
 
-![Bot](https://i.imgur.com/lgLPnEb.png)
+![Bot](https://i.imgur.com/ZefbpI0.png)
 
-### Requisitos
+### Prerequisites
 * [Node.js](https://nodejs.org/en/) - Node.js
 
-### Instalação
+### Telegram
 ````
-# Crie um bot do Telegram
-Encontre o @BotFather no Telegram, digite /newbot e siga as instruções
+# Create an Telegram bot
+Find @BotFather on Telegram, type /newbot and follow the instructions
 
 # Configure
-Copie seu token fornecido pelo @BotFather e defina ele em 'configs/telegram.js'
+Get your token from @BotFather and set in 'configs/telegram.js'
+````
 
-# Instale o PostgreSQL
-Acesse https://www.postgresql.org/download/, baixe o PostgreSQL e instale
+### PostgreSQL
+````
+# Install
+Install PostgreSQL and create an database
 
-# Configure o Banco de dados
-Em 'configs/postgresql.js' defina o username, password, database, host e dialect do banco do PostgreSQL
+# Configure
+Set PostgreSQL username, password, database, host and dialect in 'configs/postgresql.js'
+````
 
-# Instale as dependências
+### Sequelize
+````
+# Install sequelize-cli
+npm install -D sequelize-cli
+
+# Install dependencies
 npm install
 
-# Inicie
+# Create tables
+npx sequelize db:migrate
+````
+
+### Run
+````
+# Install dependencies
+npm install
+
+# Start
 npm start
 ````
 
-### Linguagens
+### Built With
 * [Node.js](https://nodejs.org/en/)
 
-### Desenvolvedores
+### Authors
 * **Giovani de Oliveira** - [xxgicoxx](https://github.com/xxgicoxx)
 
-### Agradecimentos
+### Acknowledgments
 * [FlatIcon](https://www.flaticon.com/) - Icon
