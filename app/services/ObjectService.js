@@ -115,21 +115,23 @@ class objectService {
     try {
       const objects = await Object.findAll();
 
-      let track;
       let event;
 
-      objects.forEach(async (object) => {
-        track = await correios.track(object.code);
-        event = !track ? null : track.events[0];
+      return Promise.all(
+        objects.map((object) => correios.track(object.code).then((track) => {
+          event = !track ? null : track.events[0];
 
-        if (object.events !== track.events.length) {
-          object.update({ events: track.events.length });
+          if (object.events !== track.events.length) {
+            object.update({ events: track.events.length });
 
-          $.sendMessage(object.user, `Object ${track.code}${object.name != null ? (` - ${object.name}`) : ''} changed\n\n${event.date} ${event.hour}\n${event.location}\n${event.event}\n${event.message}\n`);
-        }
-      });
+            $.sendMessage(object.user, `${track.code}${object.name != null ? (` - ${object.name}`) : ''}\n\n${event.date} ${event.hour}\n${event.location}\n${event.event}\n${event.message}\n`);
+          }
+        })),
+      );
     } catch (ex) {
       console.error(ex);
+
+      throw new Error(ex);
     }
   }
 }
