@@ -7,7 +7,7 @@ const { telegramConfig } = require('./app/configs');
 
 const bot = new Telegram(telegramConfig.token, {
   webAdmin: {
-    port: 7772,
+    port: 7770,
     host: 'localhost',
   },
   workers: 1,
