@@ -42,19 +42,23 @@ class objectService {
         $.sendMessage('Code must not be empty');
       } else {
         const code = params[0].trim();
-        const name = params[1] || null;
+        const name = params.length > 1 && params[1] !== null && params[1].trim() !== "" && params.shift().length > 0 ? params.join(' ') : null;
         const user = $.message.from.id;
 
-        const object = await Object.findOne({ where: { user, code } });
-
-        if (object) {
-          await object.update({ name });
-
-          $.sendMessage('Object already exists, just updated');
+        if(name !== null && name.length > 120) {
+          $.sendMessage('Name is too long');
         } else {
-          await Object.create({ name, user, code });
+          const object = await Object.findOne({ where: { user, code } });
 
-          $.sendMessage('Success, object added');
+          if (object) {
+            await object.update({ name });
+  
+            $.sendMessage('Object already exists, just updated');
+          } else {
+            await Object.create({ name, user, code });
+  
+            $.sendMessage('Success, object added');
+          }
         }
       }
     } catch (ex) {
