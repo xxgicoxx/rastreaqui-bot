@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const config = require('../configs/postgresql.js');
+const { postgresqlConfig } = require('../configs');
 
 const db = {};
-const sequelize = new Sequelize(config);
+const sequelize = new Sequelize(postgresqlConfig);
 
 fs
   .readdirSync(__dirname)

@@ -1,22 +1,22 @@
 {
-  "name": "rastreaqui",
-  "displayName": "RastreAQUI",
-  "version": "2.0.2",
+  "name": "rastreaqui-bot",
+  "displayName": "RastreAQUI Bot",
+  "version": "3.0.0",
   "description": "Telegram bot for track Correios objects",
   "author": "Giovani de Oliveira <giovanioliveira@outlook.com.br>",
   "license": "MIT",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xxgicoxx/rastreaqui.git"
+    "url": "https://github.com/xxgicoxx/rastreaqui-bot.git"
   },
   "bugs": {
-    "url": "https://github.com/xxgicoxx/rastreaqui/issues"
+    "url": "https://github.com/xxgicoxx/rastreaqui-bot/issues"
   },
-  "homepage": "https://github.com/xxgicoxx/rastreaqui#readme",
+  "homepage": "https://github.com/xxgicoxx/rastreaqui-bot#readme",
   "keywords": [
     "correiosjs",
     "correios",
@@ -25,10 +25,11 @@
   ],
   "dependencies": {
     "correios.js": "^2.0.2",
+    "dotenv": "^10.0.0",
     "node-cron": "^2.0.3",
-    "pg": "^7.14.0",
-    "sequelize": "^5.21.2",
-    "telegram-node-bot": "^4.0.5"
+    "node-telegram-bot-api": "^0.54.0",
+    "pg": "^8.7.1",
+    "sequelize": "^5.21.2"
   },
   "devDependencies": {
     "eslint": "^6.7.2",

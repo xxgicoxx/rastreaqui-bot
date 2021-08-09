@@ -1,7 +1,7 @@
-const MessageService = require('./MessageService');
+const HelpService = require('./HelpService');
 const ObjectService = require('./ObjectService');
 
 module.exports = {
-  MessageService,
+  HelpService,
   ObjectService,
 };
