@@ -10,46 +10,40 @@ Telegram bot for track Correios objects.
 ### 1. Configure
 ````
 # Bot
-Create and configure .env file like .env.example
+Create and configure .env file like .env.example.
 ````
 
 ### 2. Telegram
 ````
 # Create an Telegram bot
-Find @BotFather on Telegram, type /newbot and follow the instructions
+Find @BotFather on Telegram, type /newbot and follow the instructions.
 
 # Username
-Get your bot username and set 'TELEGRAM_USERNAME' in .env
+Get your bot username and set 'TELEGRAM_USERNAME' in .env.
 
 # Token
-Get your token from @BotFather and set 'TELEGRAM_TOKEN' in .env
+Get your token from @BotFather and set 'TELEGRAM_TOKEN' in .env.
 ````
 
 ### 3. PostgreSQL
 ````
 # Install
-Install PostgreSQL and create an database
+Install PostgreSQL and create an database.
 
 # Configure
-Set PostgreSQL username, password, database, host and dialect in .env
+Set PostgreSQL 'POSTGRESQL_USERNAME', 'POSTGRESQL_PASSWORD', 'POSTGRESQL_DATABASE', 'POSTGRESQL_HOST' and 'POSTGRESQL_DIALECT' in .env.
 ````
 
-### 4. Sequelize
+### 4. Run
 ````
 # Install dependencies
 npm install
 
 # Create tables
-npx sequelize db:migrate
+npm run migrate
 
 # Seed tables
-npx sequelize-cli db:seed:all
-````
-
-### 5. Run
-````
-# Install dependencies
-npm install
+npm run seed
 
 # Start
 npm start
