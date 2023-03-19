@@ -1,20 +1,20 @@
 const { Command } = require('../models');
+const { constants } = require('../utils');
 
 class HelpService {
   async help(bot, chat) {
     try {
-      let message = 'I can help you track Correios objects.\n\nYou can control me by sending these commands:\n\n';
       const commands = await Command.findAll();
+      let message = '';
 
-      commands.forEach((command) => {
-        message += `${command.dataValues.command} - ${command.dataValues.description}\n`;
-      });
+      message += constants.MESSAGE_HELP;
+      message += commands.map((command) => `${command.dataValues.command} - ${command.dataValues.description}`).join('\n');
 
-      await bot.sendMessage(chat.id, message, { parse_mode: 'html' });
+      await bot.sendMessage(chat.id, message, { parse_mode: constants.PARSE_MODE });
     } catch (error) {
       console.error(error);
 
-      await this.bot.sendMessage(this.id, 'Error, try again later');
+      await bot.sendMessage(chat.id, constants.MESSAGE_ERROR_TRY_AGAIN);
     }
   }
 }

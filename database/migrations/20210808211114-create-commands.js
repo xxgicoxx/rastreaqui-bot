@@ -14,8 +14,7 @@ module.exports = {
       allowNull: false,
       type: DataTypes.STRING(120),
     },
-  },
-  {
+  }, {
     tableName: 'commands',
     timestamps: false,
   }),

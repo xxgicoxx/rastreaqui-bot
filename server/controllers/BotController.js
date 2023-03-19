@@ -1,4 +1,8 @@
+const cluster = require('cluster');
+const cron = require('node-cron');
+
 const { telegramConfig } = require('../configs');
+const { constants } = require('../utils');
 
 const {
   HelpService,
@@ -15,33 +19,42 @@ class BotController {
 
   async handle() {
     try {
-      this.bot.on('message', async ($) => {
+      this.bot.on(constants.ON_MESSAGE, async ($) => {
         const command = $.text ? $.text.replace(telegramConfig.username, '') : $.text;
 
         switch (command) {
-          case '/list':
+          case constants.COMMAND_LIST:
             objectService.list(this.bot, $.chat, $.from);
+
             break;
-          case '/help':
+          case constants.COMMAND_COMMANDS:
             helpService.help(this.bot, $.chat);
+
+            break;
+          case constants.COMMAND_HELP:
+            helpService.help(this.bot, $.chat);
+
             break;
           default:
             break;
         }
       });
 
-      this.bot.onText(/\/add (.+)/, async ($, match) => {
+      this.bot.onText(constants.COMMAND_ADD_REGEX, async ($, match) => {
         const params = match[1].split(' ');
+
         objectService.add(this.bot, $.chat, $.from, params);
       });
 
-      this.bot.onText(/\/remove (.+)/, async ($, match) => {
+      this.bot.onText(constants.COMMAND_REMOVE_REGEX, async ($, match) => {
         const code = match[1];
+
         objectService.remove(this.bot, $.chat, $.from, code);
       });
 
-      this.bot.onText(/\/check (.+)/, async ($, match) => {
+      this.bot.onText(constants.COMMAND_CHECK_REGEX, async ($, match) => {
         const code = match[1];
+
         objectService.check(this.bot, $.chat, code);
       });
     } catch (error) {
@@ -49,9 +62,15 @@ class BotController {
     }
   }
 
-  async job(bot) {
+  async jobs() {
     try {
-      objectService.changes(bot);
+      if (!cluster.isMaster) {
+        return;
+      }
+
+      cron.schedule(constants.CRON, async () => {
+        objectService.changes(this.bot);
+      });
     } catch (error) {
       console.error(error);
     }

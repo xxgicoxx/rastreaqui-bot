@@ -23,8 +23,7 @@ module.exports = {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-  },
-  {
+  }, {
     tableName: 'objects',
     timestamps: false,
   }),

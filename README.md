@@ -1,10 +1,19 @@
 # RastreAQUI
 Telegram bot for track Correios objects.
 
-![Bot](https://i.imgur.com/ZefbpI0.png)
+<p align="center">
+  <img src="assets/imgs/rastreaquibot.png">
+</p>
+
+# Features
+* /add `code` `name` - Add object
+* /remove `code` - Remove object
+* /check `code` - Check object
+* /list - List objects
+* /help - Help
 
 # Prerequisites
-* [Node.js](https://nodejs.org/en/) - Node.js
+* [Node.js](https://nodejs.org/en/)
 
 # Running
 ### 1. Configure

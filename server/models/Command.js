@@ -14,8 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.BIGINT,
     },
-  },
-  {
+  }, {
     tableName: 'commands',
     timestamps: false,
   });
